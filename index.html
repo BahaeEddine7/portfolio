@@ -1,147 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
-   
+  
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Portfolio | Bahae Eddine Maatougui</title>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Personal Portfolio | Bahae Eddine Maatougui</title>
 
-    <!-- Box Icons (for icons) -->
-    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+   <!-- Box Icons (for icons) -->
+   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+   <!-- Custom CSS -->
+   <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-    <!-- Header -->
-    <header class="header">
-        <a href="#" class="logo">Portfolio</a>
-
-        <i class='bx bx-menu' id="menu-icon"></i>
-
-        <nav class="navbar">
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header> 
-
-    <!-- Home Section -->
-    <section class="home" id="home">
-       <div class="home-content">
-           <h3>Hello, It's Me</h3>
-           <h1>Bahae Eddine Maatougui</h1>
-           <h3>And I'm a <span>Computer Science Student</span></h3>
-           <p>I'm 19 years old and currently studying Computer Science Engineering at 3iL Ingénieurs in Limoges, France.</p>
-           <div class="social-media">
-            <a href="https://www.facebook.com/bahaeddine.maatougui.5?mibextid=ZbWKwL" target="_blank"><i class='bx bxl-facebook'></i></a>
-            <a href="https://x.com/BahaeddineMaat4?t=id66RCzeAyE1A5rAbf1uow&s=09" target="_blank"><i class='bx bxl-twitter'></i></a>
-            <a href="https://www.instagram.com/bahae_eddine_ma/profilecard/?igsh=MXBxcWhoNmN3NXFpcg==" target="_blank"><i class='bx bxl-instagram'></i></a>
-            <a href="https://linkedin.com/in/bahae-eddine-maatougui" target="_blank"><i class='bx bxl-linkedin'></i></a>
-        </div>        
-           <a href="cv.html" class="btn">View CV</a>
+<body data-theme="dark">
+   <!-- Theme and Language Controls -->
+   <div class="controls">
+       <button class="control-button" id="theme-toggle" title="Changer le thème">
+           <i class='bx bx-moon'></i>
+       </button>
+       <div class="language-selector">
+           <select id="language-select">
+               <option value="fr">🇫🇷 FR</option>
+               <option value="en">🇬🇧 EN</option>
+           </select>
        </div>
-       <div class="home-img">
-           <img src="Bahae1.jpg" alt="Profile Image">
+   </div>
+
+   <!-- Header avec structure optimisée pour le JavaScript -->
+   <header class="header">
+       <a href="#home" class="logo" data-fr="Portfolio" data-en="Portfolio">Portfolio</a>
+
+       <i class='bx bx-menu' id="menu-icon"></i>
+
+       <nav class="navbar">
+           <a href="#home" class="active" data-fr="Accueil" data-en="Home">Home</a>
+           <a href="#about" data-fr="À propos" data-en="About">About</a>
+           <a href="#skills" data-fr="Compétences" data-en="Skills">Skills</a>
+           <a href="#contact" data-fr="Contact" data-en="Contact">Contact</a>
+       </nav>
+   </header> 
+
+   <!-- Home Section -->
+   <section class="home" id="home">
+      <div class="home-content">
+          <h3 data-fr="Bonjour, C'est moi" data-en="Hello, It's Me">Hello, It's Me</h3>
+          <h1>Bahae Eddine Maatougui</h1>
+          <h3 data-fr="Et je suis <span>Étudiant en Informatique</span>" data-en="And I'm a <span>Computer Science Student</span>">And I'm a <span>Computer Science Student</span></h3>
+          <p data-fr="J'ai 19 ans et j'étudie actuellement l'ingénierie informatique à 3iL Ingénieurs à Limoges, France." data-en="I'm 19 years old and currently studying Computer Science Engineering at 3iL Ingénieurs in Limoges, France.">I'm 19 years old and currently studying Computer Science Engineering at 3iL Ingénieurs in Limoges, France.</p>
+          <div class="social-media">
+           <a href="https://www.facebook.com/bahaeddine.maatougui.5?mibextid=ZbWKwL" target="_blank"><i class='bx bxl-facebook'></i></a>
+           <a href="https://x.com/BahaeddineMaat4?t=id66RCzeAyE1A5rAbf1uow&s=09" target="_blank"><i class='bx bxl-twitter'></i></a>
+           <a href="https://www.instagram.com/bahae_eddine_ma/profilecard/?igsh=MXBxcWhoNmN3NXFpcg==" target="_blank"><i class='bx bxl-instagram'></i></a>
+           <a href="https://linkedin.com/in/bahae-eddine-maatougui" target="_blank"><i class='bx bxl-linkedin'></i></a>
+       </div>        
+          <a href="cv.html" class="btn" data-fr="Voir CV" data-en="View CV">View CV</a>
+      </div>
+      <div class="home-img">
+          <img src="Bahae1.jpg" alt="Profile Image">
+      </div>
+   </section>
+
+   <!-- About Section -->
+   <section class="about" id="about">
+       <div class="about-img">
+           <img src="Bahae2.jpg" alt="About Image">
        </div>
-    </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="Bahae2.jpg" alt="About Image">
-        </div>
+       <div class="about-content">
+           <h2 class="heading" data-fr="À propos de <span>Moi</span>" data-en="About <span>Me</span>">About <span>Me</span></h2>
+           <h3 data-fr="<span>Étudiant en Informatique</span>" data-en="<span>Computer Science Student</span>"><span>Computer Science Student</span></h3>
+           <p data-fr="J'étudie l'ingénierie informatique à 3iL Ingénieurs, où je me concentre toujours sur le développement de moi-même et pour être unique dans ce que je fais." data-en="I'm studying Computer Science Engineering at 3iL Ingénieurs, where I focus always to develop my self and to be unique in what i do.">I'm studying Computer Science Engineering at 3iL Ingénieurs, where I focus always to develop my self and to be unique in what i do.</p>
+       </div>
+   </section>
 
-        <div class="about-content">
-            <h2 class="heading">About <span>Me</span></h2>
-            <h3><span>Computer Science Student</span></h3>
-            <p>I'm studying Computer Science Engineering at 3iL Ingénieurs, where I focus always to develop my self and to be unique in what i do.</p>
-        </div>
-    </section>
-        </div> 
-    </section>
+   <!-- Skills Section -->
+   <section class="skills" id="skills">
+       <h2 class="heading" data-fr="Mes <span>Compétences</span>" data-en="My <span>Skills</span>">My <span>Skills</span></h2>
+       <div class="skills-container">
+           <div class="skill-box">
+               <i class='bx bxl-html5'></i>
+               <h3>HTML</h3>
+               <p data-fr="Expérimenté dans la création de HTML structuré et accessible pour les applications web et les sites internet." data-en="Experienced in creating structured, accessible HTML for web applications and websites.">Experienced in creating structured, accessible HTML for web applications and websites.</p>
+           </div>
+           <div class="skill-box">
+               <i class='bx bxl-css3'></i>
+               <h3>CSS</h3>
+               <p data-fr="Compétent en CSS, Flexbox, Grid et animations pour créer des designs responsives et visuellement attrayants." data-en="Proficient in CSS, Flexbox, Grid, and animations to create responsive, visually appealing designs.">Proficient in CSS, Flexbox, Grid, and animations to create responsive, visually appealing designs.</p>
+           </div>
+           <div class="skill-box">
+               <i class='bx bxl-javascript'></i>
+               <h3>JavaScript</h3>
+               <p data-fr="Compétent en JavaScript pour des fonctionnalités web dynamiques et interactives et des améliorations d'interface utilisateur." data-en="Skilled in JavaScript for dynamic, interactive web functionality and user interface enhancements.">Skilled in JavaScript for dynamic, interactive web functionality and user interface enhancements.</p>
+           </div>
+           <div class="skill-box">
+               <i class='bx bxs-microchip'></i>
+               <h3>C</h3>
+               <p data-fr="Expérimenté en programmation C pour la programmation système, le code de bas niveau et l'optimisation des performances." data-en="Experienced in C programming for systems programming, low-level code, and performance optimization.">Experienced in C programming for systems programming, low-level code, and performance optimization.</p>
+           </div>
+           <div class="skill-box">
+               <i class='bx bxs-paint'></i>
+               <h3>Processing</h3>
+               <p data-fr="Compétent en Processing pour le design visuel et interactif, avec un focus sur les projets de codage créatif." data-en="Skilled in Processing for visual and interactive design, with a focus on creative coding projects.">Skilled in Processing for visual and interactive design, with a focus on creative coding projects.</p>
+           </div>
+           <div class="skill-box">
+               <i class='bx bxl-java'></i>
+               <h3>Java</h3>
+               <p data-fr="Expérimenté en Java pour construire des applications robustes, avec une base solide en programmation orientée objet." data-en="Experienced in Java for building robust applications, with a strong foundation in object-oriented programming.">Experienced in Java for building robust applications, with a strong foundation in object-oriented programming.</p>
+           </div>
+           <div class="skill-box">
+               <i class='bx bxs-data'></i>
+               <h3>MySQL</h3>
+               <p data-fr="Compétent en MySQL pour gérer les bases de données, effectuer des requêtes et assurer l'intégrité des données." data-en="Proficient in MySQL for managing databases, performing queries, and ensuring data integrity.">Proficient in MySQL for managing databases, performing queries, and ensuring data integrity.</p>
+           </div>
+       </div>
+   </section>
 
+   <!-- Contact Section -->
+   <section class="contact" id="contact"> 
+       <h2 class="heading" data-fr="Me <span>Contacter</span>" data-en="Contact <span>Me</span>">Contact <span>Me</span></h2>
 
-<!-- Skills Section -->
-<section class="skills" id="skills">
-    <h2 class="heading">My <span>Skills</span></h2>
-    <div class="skills-container">
-        <div class="skill-box">
-            <i class='bx bxl-html5'></i>
-            <h3>HTML</h3>
-            <p>Experienced in creating structured, accessible HTML for web applications and websites.</p>
-        </div>
-        <div class="skill-box">
-            <i class='bx bxl-css3'></i>
-            <h3>CSS</h3>
-            <p>Proficient in CSS, Flexbox, Grid, and animations to create responsive, visually appealing designs.</p>
-        </div>
-        <div class="skill-box">
-            <i class='bx bxl-javascript'></i>
-            <h3>JavaScript</h3>
-            <p>Skilled in JavaScript for dynamic, interactive web functionality and user interface enhancements.</p>
-        </div>
-        <!-- Updated Skill: C -->
-        <div class="skill-box">
-            <i class='bx bxs-microchip'></i>
-            <h3>C</h3>
-            <p>Experienced in C programming for systems programming, low-level code, and performance optimization.</p>
-        </div>
-        <!-- Skill: Processing -->
-        <div class="skill-box">
-            <i class='bx bxs-paint'></i>
-            <h3>Processing</h3>
-            <p>Skilled in Processing for visual and interactive design, with a focus on creative coding projects.</p>
-        </div>
-        <!-- Skill: Java -->
-        <div class="skill-box">
-            <i class='bx bxl-java'></i>
-            <h3>Java</h3>
-            <p>Experienced in Java for building robust applications, with a strong foundation in object-oriented programming.</p>
-        </div>
-        <!-- Skill: MySQL -->
-        <div class="skill-box">
-            <i class='bx bxs-data'></i>
-            <h3>MySQL</h3>
-            <p>Proficient in MySQL for managing databases, performing queries, and ensuring data integrity.</p>
-        </div>
-    </div>
-</section>
+       <form action="#" method="post">
+           <div class="input-box">
+               <input type="text" name="fullname" data-fr-placeholder="Nom complet" data-en-placeholder="Full Name" placeholder="Full Name" required>
+               <input type="email" name="email" data-fr-placeholder="Adresse email" data-en-placeholder="Email Address" placeholder="Email Address" required>
+           </div>
+           <div class="input-box">
+               <input type="tel" name="mobile" data-fr-placeholder="Numéro de téléphone" data-en-placeholder="Mobile Number" placeholder="Mobile Number">
+               <input type="text" name="subject" data-fr-placeholder="Sujet de l'email" data-en-placeholder="Email Subject" placeholder="Email Subject">
+           </div>
+           <textarea name="message" cols="30" rows="10" data-fr-placeholder="Votre message" data-en-placeholder="Your Message" placeholder="Your Message" required></textarea>
+           <input type="submit" value="Send Message" data-fr-value="Envoyer le message" data-en-value="Send Message" class="btn">
+       </form>
+   </section>
 
+   <!-- Footer -->
+   <footer class="footer">
+       <div class="footer-text">
+           <p data-fr="&copy; 2024 Bahae Eddine Maatougui | Tous droits réservés." data-en="&copy; 2024 Bahae Eddine Maatougui | All Rights Reserved.">&copy; 2024 Bahae Eddine Maatougui | All Rights Reserved.</p>
+       </div>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span></h2>
+       <div class="footer-iconTop">
+           <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
+       </div>
+   </footer>  
 
-        <form action="#">
-            <div class="input-box">
-                <input type="text" placeholder="Full Name" required>
-                <input type="email" placeholder="Email Address" required>
-            </div>
-            <div class="input-box">
-                <input type="tel" placeholder="Mobile Number">
-                <input type="text" placeholder="Email Subject">
-            </div>
-            <textarea cols="30" rows="10" placeholder="Your Message" required></textarea>
-            <input type="submit" value="Send Message" class="btn">
-        </form>
-    </section>
+   <!-- Custom JavaScript -->
+   <script>
+// Gestion du thème et des langues
+const themeToggle = document.getElementById('theme-toggle');
+const languageSelect = document.getElementById('language-select');
+const body = document.body;
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-text">
-            <p>&copy; 2024 Bahae Eddine Maatougui | All Rights Reserved.</p>
-        </div>
+// Toggle theme
+themeToggle.addEventListener('click', () => {
+   const currentTheme = body.getAttribute('data-theme');
+   const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+   const icon = themeToggle.querySelector('i');
+   
+   body.setAttribute('data-theme', newTheme);
+   icon.className = newTheme === 'dark' ? 'bx bx-moon' : 'bx bx-sun';
+   
+   localStorage.setItem('theme', newTheme);
+});
 
-        <div class="footer-iconTop">
-            <a href="#home"><i class='bx bx-up-arrow-alt'></i></a>
-        </div>
-    </footer>  
+// Change language
+languageSelect.addEventListener('change', (e) => {
+   const selectedLang = e.target.value;
+   
+   // Change text content
+   const elementsWithLang = document.querySelectorAll('[data-fr][data-en]');
+   elementsWithLang.forEach(element => {
+       const langText = element.getAttribute(`data-${selectedLang}`);
+       if (langText) {
+           element.innerHTML = langText;
+       }
+   });
+   
+   // Change placeholders
+   const inputsWithPlaceholder = document.querySelectorAll('[data-fr-placeholder][data-en-placeholder]');
+   inputsWithPlaceholder.forEach(input => {
+       const langPlaceholder = input.getAttribute(`data-${selectedLang}-placeholder`);
+       if (langPlaceholder) {
+           input.placeholder = langPlaceholder;
+       }
+   });
+   
+   // Change button values
+   const buttonsWithValue = document.querySelectorAll('[data-fr-value][data-en-value]');
+   buttonsWithValue.forEach(button => {
+       const langValue = button.getAttribute(`data-${selectedLang}-value`);
+       if (langValue) {
+           button.value = langValue;
+       }
+   });
+   
+   localStorage.setItem('language', selectedLang);
+});
 
-    <!-- Custom JavaScript -->
-    <script src="js/script.js"></script>
+// Load saved preferences
+document.addEventListener('DOMContentLoaded', () => {
+   const savedTheme = localStorage.getItem('theme') || 'dark';
+   const savedLang = localStorage.getItem('language') || 'en';
+   
+   body.setAttribute('data-theme', savedTheme);
+   languageSelect.value = savedLang;
+   
+   // Trigger language change
+   languageSelect.dispatchEvent(new Event('change'));
+   
+   // Set theme icon
+   const icon = themeToggle.querySelector('i');
+   icon.className = savedTheme === 'dark' ? 'bx bx-moon' : 'bx bx-sun';
+});
+
+/*==================== Navigation Professionnelle ====================*/
+let sections = document.querySelectorAll('section');
+let navLinks = document.querySelectorAll('header nav a');
+let header = document.querySelector('header');
+let menuIcon = document.getElementById('menu-icon');
+let navbar = document.querySelector('.navbar');
+
+// Fonction de throttling pour optimiser les performances
+function throttle(func, limit) {
+   let inThrottle;
+   return function() {
+       const args = arguments;
+       const context = this;
+       if (!inThrottle) {
+           func.apply(context, args);
+           inThrottle = true;
+           setTimeout(() => inThrottle = false, limit);
+       }
+   }
+}
+
+// Fonction principale de scroll optimisée
+const handleScroll = throttle(() => {
+   let top = window.scrollY;
+   
+   // Mise à jour des liens actifs
+   sections.forEach(sec => {
+       let offset = sec.offsetTop - 150;
+       let height = sec.offsetHeight;
+       let id = sec.getAttribute('id');
+       if (top >= offset && top < offset + height) {
+           navLinks.forEach(link => {
+               link.classList.remove('active');
+           });
+           
+           const activeLink = document.querySelector('header nav a[href="#' + id + '"]');
+           if (activeLink) {
+               activeLink.classList.add('active');
+           }
+       }
+   });
+   
+   // Header sticky
+   if (header) {
+       header.classList.toggle('sticky', top > 100);
+   }
+}, 16);
+
+// Écouteur d'événement
+window.addEventListener('scroll', handleScroll);
+
+// Menu mobile toggle
+if (menuIcon && navbar) {
+   menuIcon.addEventListener('click', () => {
+       navbar.classList.toggle('active');
+       menuIcon.classList.toggle('bx-x');
+   });
+}
+
+// Smooth scroll pour les liens de navigation
+navLinks.forEach(link => {
+   link.addEventListener('click', (e) => {
+       const href = link.getAttribute('href');
+       
+       if (href && href.startsWith('#')) {
+           e.preventDefault();
+           const targetId = href.substring(1);
+           const targetSection = document.getElementById(targetId);
+           
+           if (targetSection) {
+               const offsetTop = targetSection.offsetTop - 80;
+               window.scrollTo({
+                   top: offsetTop,
+                   behavior: 'smooth'
+               });
+           }
+       }
+       
+       // Fermer le menu mobile
+       if (navbar && navbar.classList.contains('active')) {
+           navbar.classList.remove('active');
+           menuIcon.classList.remove('bx-x');
+       }
+   });
+});
+
+// Initialisation au chargement
+document.addEventListener('DOMContentLoaded', () => {
+   handleScroll(); // Définir le lien actif initial
+});
+   </script>
 </body>
 </html>

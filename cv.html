@@ -1,100 +1,989 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV | Bahae Eddine Maatougui</title>
-    <link rel="stylesheet" href="style.css"> <!-- Link to your existing CSS for consistent styling -->
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>CV | Bahae Eddine Maatougui</title>
+   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+   <style>
+           /* ==================== IMPORT FONTS ==================== */
+       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+       /* ==================== CSS VARIABLES ==================== */
+       :root {
+           /* Dark Theme Colors (default) */
+           --bg-color: #0f0f0f;
+           --second-bg-color: #1a1a1a;
+           --text-color: #ffffff;
+           --text-secondary: #b0b0b0;
+           --accent-color: #00d4ff;
+           --accent-secondary: #ff6b35;
+           --gradient-primary: linear-gradient(135deg, #00d4ff 0%, #0099cc 100%);
+           --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+           --shadow-light: rgba(0, 212, 255, 0.3);
+           --shadow-dark: rgba(0, 0, 0, 0.5);
+           
+           /* Typography */
+           --font-primary: 'Poppins', sans-serif;
+           --font-size-xl: clamp(3.5rem, 8vw, 6rem);
+           --font-size-lg: clamp(2.5rem, 5vw, 4rem);
+           --font-size-md: clamp(1.8rem, 3vw, 2.5rem);
+           --font-size-sm: clamp(1.4rem, 2vw, 1.8rem);
+           --font-size-xs: clamp(1.2rem, 1.5vw, 1.6rem);
+           
+           /* Border radius */
+           --radius-sm: 0.8rem;
+           --radius-md: 1.5rem;
+           --radius-lg: 2rem;
+           --radius-xl: 3rem;
+           
+           /* Transitions */
+           --transition-fast: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+           --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+           --transition-bounce: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+       }
+
+       /* Light Theme Colors */
+       [data-theme="light"] {
+           --bg-color: #ffffff;
+           --second-bg-color: #f8f9fa;
+           --text-color: #2c3e50;
+           --text-secondary: #6c757d;
+           --accent-color: #007bff;
+           --accent-secondary: #dc3545;
+           --gradient-primary: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+           --gradient-secondary: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
+           --shadow-light: rgba(0, 123, 255, 0.2);
+           --shadow-dark: rgba(0, 0, 0, 0.1);
+       }
+
+       /* ==================== GLOBAL RESET ==================== */
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+       }
+
+       html {
+           font-size: 62.5%; /* 1rem = 10px */
+           scroll-behavior: smooth;
+       }
+
+       body {
+           font-family: var(--font-primary);
+           background: var(--bg-color);
+           color: var(--text-color);
+           line-height: 1.6;
+           font-size: 1.6rem;
+           -webkit-font-smoothing: antialiased;
+           transition: var(--transition-smooth);
+       }
+
+       /* ==================== THEME & LANGUAGE CONTROLS ==================== */
+       .controls {
+           position: fixed;
+           top: 50%;
+           right: 2rem;
+           transform: translateY(-50%);
+           display: flex;
+           flex-direction: column;
+           gap: 1rem;
+           z-index: 1001;
+       }
+
+       .control-button {
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           width: 5rem;
+           height: 5rem;
+           background: var(--second-bg-color);
+           border: 1px solid rgba(255, 255, 255, 0.1);
+           border-radius: 50%;
+           color: var(--text-color);
+           font-size: 2rem;
+           cursor: pointer;
+           transition: var(--transition-fast);
+           box-shadow: 0 0.5rem 1rem var(--shadow-dark);
+       }
+
+       [data-theme="light"] .control-button {
+           border: 1px solid rgba(0, 0, 0, 0.1);
+       }
+
+       .control-button:hover {
+           background: var(--accent-color);
+           color: var(--bg-color);
+           transform: scale(1.1);
+       }
+
+       .language-selector {
+           background: var(--second-bg-color);
+           border: 1px solid rgba(255, 255, 255, 0.1);
+           border-radius: var(--radius-md);
+           padding: 1rem;
+           box-shadow: 0 0.5rem 1rem var(--shadow-dark);
+       }
+
+       [data-theme="light"] .language-selector {
+           border: 1px solid rgba(0, 0, 0, 0.1);
+       }
+
+       .language-selector select {
+           background: transparent;
+           border: none;
+           color: var(--text-color);
+           font-size: 1.4rem;
+           font-family: var(--font-primary);
+           cursor: pointer;
+           outline: none;
+       }
+
+       .language-selector select option {
+           background: var(--second-bg-color);
+           color: var(--text-color);
+       }
+
+       /* ==================== HEADER ==================== */
+       .cv-header {
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           padding: 1.5rem 4%;
+           background: rgba(15, 15, 15, 0.95);
+           backdrop-filter: blur(20px);
+           display: flex;
+           justify-content: space-between;
+           align-items: center;
+           z-index: 1000;
+           border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+           transition: var(--transition-smooth);
+       }
+
+       [data-theme="light"] .cv-header {
+           background: rgba(255, 255, 255, 0.95);
+           border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+       }
+
+       .back-to-home, .download-cv {
+           display: inline-flex;
+           align-items: center;
+           gap: 0.8rem;
+           padding: 1.2rem 2.4rem;
+           background: var(--gradient-primary);
+           border-radius: 3rem;
+           font-size: 1.6rem;
+           font-weight: 600;
+           color: var(--bg-color);
+           text-decoration: none;
+           transition: var(--transition-smooth);
+           box-shadow: 0 0.5rem 1.5rem var(--shadow-light);
+       }
+
+       .back-to-home:hover, .download-cv:hover {
+           transform: translateY(-0.2rem);
+           box-shadow: 0 1rem 2rem var(--shadow-light);
+       }
+
+       /* ==================== MAIN CONTAINER ==================== */
+       .cv-container {
+           max-width: 1200px;
+           margin: 0 auto;
+           padding: 8rem 2rem 4rem;
+           position: relative;
+       }
+
+       /* ==================== HERO SECTION ==================== */
+       .cv-hero {
+           text-align: center;
+           padding: 4rem 0;
+           position: relative;
+           margin-bottom: 4rem;
+       }
+
+       .cv-hero::before {
+           content: '';
+           position: absolute;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+           width: 300px;
+           height: 300px;
+           background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+           opacity: 0.1;
+           border-radius: 50%;
+           animation: pulse 4s ease-in-out infinite;
+       }
+
+       .cv-hero h1 {
+           font-size: clamp(4rem, 6vw, 7rem);
+           font-weight: 800;
+           background: var(--gradient-primary);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           margin-bottom: 1rem;
+           position: relative;
+           z-index: 2;
+       }
+
+       .cv-hero h2 {
+           font-size: clamp(2rem, 3vw, 3rem);
+           color: var(--text-secondary);
+           font-weight: 500;
+           margin-bottom: 2rem;
+           position: relative;
+           z-index: 2;
+       }
+
+       /* ==================== GRID LAYOUT ==================== */
+       .cv-grid {
+           display: grid;
+           grid-template-columns: 1fr 2fr;
+           gap: 4rem;
+           margin-bottom: 4rem;
+       }
+
+       /* ==================== LEFT COLUMN ==================== */
+       .cv-sidebar {
+           background: var(--second-bg-color);
+           padding: 3rem;
+           border-radius: var(--radius-lg);
+           height: fit-content;
+           border: 1px solid rgba(255, 255, 255, 0.1);
+           position: sticky;
+           top: 10rem;
+           transition: var(--transition-smooth);
+       }
+
+       [data-theme="light"] .cv-sidebar {
+           border: 1px solid rgba(0, 0, 0, 0.1);
+       }
+
+       /* ==================== RIGHT COLUMN ==================== */
+       .cv-main {
+           display: flex;
+           flex-direction: column;
+           gap: 3rem;
+       }
+
+       /* ==================== SECTION STYLING ==================== */
+       .cv-section {
+           background: var(--second-bg-color);
+           padding: 3rem;
+           border-radius: var(--radius-lg);
+           border: 1px solid rgba(255, 255, 255, 0.1);
+           transition: var(--transition-smooth);
+           position: relative;
+           overflow: hidden;
+       }
+
+       [data-theme="light"] .cv-section {
+           border: 1px solid rgba(0, 0, 0, 0.1);
+       }
+
+       .cv-section::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: -100%;
+           width: 100%;
+           height: 100%;
+           background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.05), transparent);
+           transition: var(--transition-smooth);
+       }
+
+       .cv-section:hover::before {
+           left: 100%;
+       }
+
+       .cv-section:hover {
+           transform: translateY(-0.5rem);
+           box-shadow: 0 1rem 3rem var(--shadow-dark);
+           border-color: rgba(0, 212, 255, 0.3);
+       }
+
+       .section-title {
+           font-size: 2.8rem;
+           font-weight: 700;
+           color: var(--accent-color);
+           margin-bottom: 2rem;
+           display: flex;
+           align-items: center;
+           gap: 1rem;
+       }
+
+       .section-title i {
+           font-size: 3rem;
+           background: var(--gradient-primary);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+       }
+
+       /* ==================== CONTACT SECTION ==================== */
+       .contact-item {
+           display: flex;
+           align-items: center;
+           gap: 1.5rem;
+           margin-bottom: 1.5rem;
+           padding: 1rem;
+           border-radius: var(--radius-sm);
+           transition: var(--transition-smooth);
+       }
+
+       .contact-item:hover {
+           background: rgba(0, 212, 255, 0.1);
+           transform: translateX(0.5rem);
+       }
+
+       .contact-icon {
+           width: 4rem;
+           height: 4rem;
+           background: var(--gradient-primary);
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           color: var(--bg-color);
+           font-size: 1.8rem;
+           flex-shrink: 0;
+       }
+
+       .contact-text {
+           font-size: 1.4rem;
+           color: var(--text-secondary);
+       }
+
+       .contact-text a {
+           color: var(--accent-color);
+           text-decoration: none;
+           transition: var(--transition-smooth);
+       }
+
+       .contact-text a:hover {
+           text-decoration: underline;
+       }
+
+       /* ==================== LANGUAGES & SKILLS LISTS ==================== */
+       .skill-list, .language-list {
+           list-style: none;
+       }
+
+       .skill-list li, .language-list li {
+           padding: 1rem;
+           margin-bottom: 1rem;
+           background: rgba(0, 212, 255, 0.05);
+           border-radius: var(--radius-sm);
+           border-left: 4px solid var(--accent-color);
+           font-size: 1.4rem;
+           transition: var(--transition-smooth);
+       }
+
+       .skill-list li:hover, .language-list li:hover {
+           background: rgba(0, 212, 255, 0.1);
+           transform: translateX(0.5rem);
+       }
+
+       /* ==================== EDUCATION & PROJECTS TIMELINE ==================== */
+       .timeline-item {
+           position: relative;
+           padding-left: 3rem;
+           margin-bottom: 3rem;
+           border-left: 2px solid var(--accent-color);
+       }
+
+       .timeline-item::before {
+           content: '';
+           position: absolute;
+           left: -0.8rem;
+           top: 0;
+           width: 1.5rem;
+           height: 1.5rem;
+           background: var(--gradient-primary);
+           border-radius: 50%;
+           box-shadow: 0 0 1rem var(--shadow-light);
+       }
+
+       .timeline-date {
+           font-size: 1.2rem;
+           color: var(--accent-color);
+           font-weight: 600;
+           margin-bottom: 0.5rem;
+       }
+
+       .timeline-title {
+           font-size: 1.8rem;
+           font-weight: 700;
+           color: var(--text-color);
+           margin-bottom: 0.5rem;
+       }
+
+       .timeline-subtitle {
+           font-size: 1.4rem;
+           color: var(--text-secondary);
+           margin-bottom: 1rem;
+       }
+
+       .timeline-description {
+           font-size: 1.4rem;
+           color: var(--text-secondary);
+           line-height: 1.6;
+       }
+
+       /* ==================== TECH STACK ==================== */
+       .tech-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+           gap: 2rem;
+           margin-top: 2rem;
+       }
+
+       .tech-category {
+           background: rgba(0, 212, 255, 0.05);
+           padding: 2rem;
+           border-radius: var(--radius-md);
+           border: 1px solid rgba(0, 212, 255, 0.2);
+           transition: var(--transition-smooth);
+       }
+
+       .tech-category:hover {
+           background: rgba(0, 212, 255, 0.1);
+           transform: translateY(-0.3rem);
+       }
+
+       .tech-category h4 {
+           color: var(--accent-color);
+           font-size: 1.6rem;
+           font-weight: 600;
+           margin-bottom: 1rem;
+       }
+
+       .tech-category p {
+           color: var(--text-secondary);
+           font-size: 1.3rem;
+           line-height: 1.5;
+       }
+
+       /* ==================== PROFILE SECTION ==================== */
+       .profile-text {
+           font-size: 1.5rem;
+           line-height: 1.8;
+           color: var(--text-secondary);
+           text-align: justify;
+       }
+
+       /* ==================== INTERESTS ==================== */
+       .interests-grid {
+           display: grid;
+           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+           gap: 1.5rem;
+           margin-top: 1rem;
+       }
+
+       .interest-card {
+           background: rgba(255, 107, 53, 0.1);
+           padding: 2rem;
+           border-radius: var(--radius-md);
+           text-align: center;
+           border: 1px solid rgba(255, 107, 53, 0.2);
+           transition: var(--transition-smooth);
+       }
+
+       .interest-card:hover {
+           background: rgba(255, 107, 53, 0.15);
+           transform: translateY(-0.3rem);
+       }
+
+       .interest-card i {
+           font-size: 3rem;
+           color: var(--accent-secondary);
+           margin-bottom: 1rem;
+       }
+
+       .interest-card h4 {
+           color: var(--text-color);
+           font-size: 1.6rem;
+           font-weight: 600;
+       }
+
+       /* ==================== ANIMATIONS ==================== */
+       @keyframes pulse {
+           0%, 100% { transform: translate(-50%, -50%) scale(1); }
+           50% { transform: translate(-50%, -50%) scale(1.1); }
+       }
+
+       /* ==================== RESPONSIVE DESIGN ==================== */
+       @media (max-width: 1200px) {
+           html {
+               font-size: 55%;
+           }
+           
+           .cv-container {
+               padding: 8rem 3% 4rem;
+           }
+           
+           .controls {
+               right: 1rem;
+           }
+       }
+
+       @media (max-width: 991px) {
+           .cv-header {
+               flex-direction: column;
+               gap: 1rem;
+               padding: 1rem 2rem;
+           }
+
+           .cv-container {
+               padding: 12rem 1rem 4rem;
+           }
+
+           .cv-grid {
+               grid-template-columns: 1fr;
+               gap: 2rem;
+           }
+
+           .cv-sidebar {
+               position: static;
+           }
+
+           .tech-grid {
+               grid-template-columns: 1fr;
+           }
+
+           .interests-grid {
+               grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+           }
+           
+           .controls {
+               top: auto;
+               bottom: 2rem;
+               right: 2rem;
+               flex-direction: row;
+               transform: none;
+           }
+       }
+
+       @media (max-width: 768px) {
+           html {
+               font-size: 50%;
+           }
+           
+           .cv-section {
+               padding: 2rem;
+           }
+
+           .section-title {
+               font-size: 2.2rem;
+           }
+
+           .timeline-item {
+               padding-left: 2rem;
+           }
+       }
+
+       @media (max-width: 480px) {
+           html {
+               font-size: 45%;
+           }
+           
+           .cv-section {
+               padding: 1.5rem;
+           }
+
+           .section-title {
+               font-size: 1.8rem;
+           }
+
+           .timeline-item {
+               padding-left: 1.5rem;
+           }
+           
+           .controls {
+               bottom: 1rem;
+               right: 1rem;
+           }
+           
+           .control-button {
+               width: 4rem;
+               height: 4rem;
+               font-size: 1.6rem;
+           }
+       }
+
+       /* ==================== CUSTOM SCROLLBAR ==================== */
+       ::-webkit-scrollbar {
+           width: 1rem;
+       }
+
+       ::-webkit-scrollbar-track {
+           background: var(--bg-color);
+       }
+
+       ::-webkit-scrollbar-thumb {
+           background: var(--gradient-primary);
+           border-radius: var(--radius-sm);
+       }
+
+       ::-webkit-scrollbar-thumb:hover {
+           background: var(--accent-secondary);
+       }
+
+       /* ==================== SELECTION STYLING ==================== */
+       ::selection {
+           background: var(--accent-color);
+           color: var(--bg-color);
+       }
+
+       ::-moz-selection {
+           background: var(--accent-color);
+           color: var(--bg-color);
+       }
+
+       /* ==================== FOCUS VISIBLE ==================== */
+       *:focus-visible {
+           outline: 2px solid var(--accent-color);
+           outline-offset: 2px;
+       }
+   </style>
 </head>
+<body>
+   <!-- Header -->
+   <header class="cv-header">
+       <a href="index.html" class="back-to-home">
+           <i class="fas fa-arrow-left"></i>
+           <span data-lang="back-to-home">Back to Home</span>
+       </a>
+       <a href="CV FINAL.pdf" download="Bahae_Eddine_Maatougui_CV.pdf" class="download-cv">
+           <i class="fas fa-download"></i>
+           <span data-lang="download-cv">Download CV</span>
+       </a>
+   </header>
 
-<body class="cv-body">
+   <!-- Main Container -->
+   <div class="cv-container">
+       <!-- Hero Section -->
+       <section class="cv-hero">
+           <h1>Maatougui Bahae Eddine</h1>
+           <h2 data-lang="job-title">Computer Science Engineering Student</h2>
+       </section>
 
-    <!-- Header with "Back to Home" and "Download CV" -->
-    <header class="cv-header">
-        <a href="index.html" class="back-to-home">← Back to Home</a>
-        <a href="CV FINAL.pdf" download="Bahae_Eddine_Maatougui_CV.pdf" class="download-cv">Download CV</a>
-    </header>
+       <!-- Grid Layout -->
+       <div class="cv-grid">
+           <!-- Sidebar -->
+           <aside class="cv-sidebar">
+               <!-- Contact Section -->
+               <div class="cv-section">
+                   <h2 class="section-title">
+                       <i class="fas fa-address-book"></i>
+                       <span data-lang="contact">Contact</span>
+                   </h2>
+                   <div class="contact-item">
+                       <div class="contact-icon">
+                           <i class="fas fa-phone"></i>
+                       </div>
+                       <div class="contact-text">+33 695592411</div>
+                   </div>
+                   <div class="contact-item">
+                       <div class="contact-icon">
+                           <i class="fas fa-envelope"></i>
+                       </div>
+                       <div class="contact-text">maatougiahe62@gmail.com</div>
+                   </div>
+                   <div class="contact-item">
+                       <div class="contact-icon">
+                           <i class="fas fa-map-marker-alt"></i>
+                       </div>
+                       <div class="contact-text">16 Avenue de Midi</div>
+                   </div>
+                   <div class="contact-item">
+                       <div class="contact-icon">
+                           <i class="fab fa-linkedin"></i>
+                       </div>
+                       <div class="contact-text">
+                           <a href="https://linkedin.com/in/bahae-eddine-maatougui" target="_blank" data-lang="linkedin-profile">LinkedIn Profile</a>
+                       </div>
+                   </div>
+               </div>
 
-    <!-- Main CV Content -->
-    <section class="cv-content">
-        <h1>Maatougui Bahae Eddine</h1>
-        <h3>Student in 2nd Year of Integrated Preparatory Class</h3>
+               <!-- Languages Section -->
+               <div class="cv-section">
+                   <h2 class="section-title">
+                       <i class="fas fa-globe"></i>
+                       <span data-lang="languages">Languages</span>
+                   </h2>
+                   <ul class="language-list">
+                       <li><strong data-lang="french">French</strong> - <span data-lang="fluent">Fluent</span></li>
+                       <li><strong data-lang="arabic">Arabic</strong> - <span data-lang="native">Native Speaker</span></li>
+                       <li><strong data-lang="english">English</strong> - <span data-lang="intermediate">Intermediate</span></li>
+                       <li><strong data-lang="spanish">Spanish</strong> - <span data-lang="beginner">Beginner</span></li>
+                   </ul>
+               </div>
 
-        <!-- Contact Section -->
-        <div class="cv-section">
-            <h2>Contact</h2>
-            <p>📞 +33 695592411</p>
-            <p>✉ maatougiahe62@gmail.com</p>
-            <p>📍 16 Avenue de Midi</p>
-            <p>🔗 <a href="https://linkedin.com/in/bahae-eddine-maatougui" target="_blank">linkedin.com/in/bahae-eddine-maatougui</a></p>
-        </div>
+               <!-- Interests Section -->
+               <div class="cv-section">
+                   <h2 class="section-title">
+                       <i class="fas fa-heart"></i>
+                       <span data-lang="interests">Interests</span>
+                   </h2>
+                   <div class="interests-grid">
+                       <div class="interest-card">
+                           <i class="fas fa-futbol"></i>
+                           <h4 data-lang="soccer">Soccer</h4>
+                       </div>
+                       <div class="interest-card">
+                           <i class="fas fa-table-tennis"></i>
+                           <h4 data-lang="tennis">Tennis</h4>
+                       </div>
+                       <div class="interest-card">
+                           <i class="fas fa-calculator"></i>
+                           <h4 data-lang="mathematics">Mathematics</h4>
+                       </div>
+                       <div class="interest-card">
+                           <i class="fas fa-code"></i>
+                           <h4 data-lang="programming">Programming</h4>
+                       </div>
+                   </div>
+               </div>
+           </aside>
 
-        <!-- Education Section -->
-        <div class="cv-section">
-            <h2>Education</h2>
-            <p><strong>3iL Ingénieur School, Computer Science Engineering Cycle</strong><br>
-            Limoges, France<br>
-            September 2023 - Present</p>
+           <!-- Main Content -->
+           <main class="cv-main">
+               <!-- Profile Section -->
+               <section class="cv-section">
+                   <h2 class="section-title">
+                       <i class="fas fa-user"></i>
+                       <span data-lang="profile">Profile</span>
+                   </h2>
+                   <p class="profile-text" data-lang="profile-text">
+                       Currently in my second year of an integrated preparatory program at the 3iL School of Computer Science in Limoges, I have a strong interest in digital technologies and software development. I am looking for a 36-month internship in software development starting September 2025. With a rigorous and varied training background, I have built a solid foundation in programming, algorithms, and software design. I am enthusiastic, persistent, and eager for new challenges, ready to invest fully in your team's ambitions.
+                   </p>
+               </section>
 
-            <p><strong>Lycée L’Aube Scientifique</strong><br>
-            Baccalaureate in Physics<br>
-            Temara, Morocco<br>
-            September 2022 - June 2023</p>
-        </div>
+               <!-- Education Section -->
+               <section class="cv-section">
+                   <h2 class="section-title">
+                       <i class="fas fa-graduation-cap"></i>
+                       <span data-lang="education">Education</span>
+                   </h2>
+                   <div class="timeline-item">
+                       <div class="timeline-date" data-lang="date-present">September 2023 - Present</div>
+                       <div class="timeline-title">3iL Ingénieur School</div>
+                       <div class="timeline-subtitle" data-lang="cs-engineering">Computer Science Engineering Cycle</div>
+                       <div class="timeline-description">Limoges, France</div>
+                   </div>
+                   <div class="timeline-item">
+                       <div class="timeline-date" data-lang="date-bac">September 2022 - June 2023</div>
+                       <div class="timeline-title">Lycée L'Aube Scientifique</div>
+                       <div class="timeline-subtitle" data-lang="bac-physics">Baccalaureate in Physics</div>
+                       <div class="timeline-description">Temara, Morocco</div>
+                   </div>
+               </section>
 
-        <!-- Languages Section -->
-        <div class="cv-section">
-            <h2>Languages</h2>
-            <ul>
-                <li>French - Fluent</li>
-                <li>Arabic - Native Speaker</li>
-                <li>English - Intermediate</li>
-                <li>Spanish - Beginner</li>
-            </ul>
-        </div>
+               <section class="cv-section">
+                   <h2 class="section-title">
+                       <i class="fas fa-code"></i>
+                       <span data-lang="technical-skills">Technical Skills</span>
+                   </h2>
+                   <div class="tech-grid">
+                       <div class="tech-category">
+                           <h4 data-lang="programming-languages">Programming Languages</h4>
+                           <p>Java, Processing, C/C++, Python, JavaScript, HTML, CSS</p>
+                       </div>
+                       <div class="tech-category">
+                           <h4 data-lang="systems-networking">Systems & Networking</h4>
+                           <p>Linux Servers (Ubuntu, Debian, Kali), System Administration</p>
+                       </div>
+                       <div class="tech-category">
+                           <h4 data-lang="databases">Databases</h4>
+                           <p>SQL, MySQL, Database Design & Management</p>
+                       </div>
+                       <div class="tech-category">
+                           <h4 data-lang="hardware-embedded">Hardware & Embedded</h4>
+                           <p>Arduino, Electronics, System Design</p>
+                       </div>
+                   </div>
+               </section>
+           </main>
+       </div>
+   </div>
 
-        <!-- Profile Section -->
-        <div class="cv-section">
-            <h2>Profile</h2>
-            <p>Currently in my second year of an integrated preparatory program at the 3iL School of Computer Science in Limoges, I have a strong interest in digital technologies and software development. I am looking for a 36-month internship in software development starting September 2025. With a rigorous and varied training background, I have built a solid foundation in programming, algorithms, and software design. I am enthusiastic, persistent, and eager for new challenges, ready to invest fully in your team’s ambitions.</p>
-        </div>
+   <!-- Theme & Language Controls -->
+   <div class="controls">
+       <button class="control-button" id="theme-toggle">
+           <i class="fas fa-sun"></i>
+       </button>
+       <div class="language-selector">
+           <select id="language-select">
+               <option value="fr">FR</option>
+               <option value="en">EN</option>
+           </select>
+       </div>
+   </div>
 
-        <!-- Projects Section -->
-        <div class="cv-section">
-            <h2>Projects</h2>
-            <p><strong>Java Game Project</strong> - Creation and development of the game "PacMan" <br>
-            March 2024 - May 2024 (Java)</p>
+   <script>
+       // ==================== THEME TOGGLE ==================== 
+       const themeToggle = document.getElementById('theme-toggle');
+       const themeIcon = themeToggle.querySelector('i');
+       
+       themeToggle.addEventListener('click', function() {
+           const body = document.body;
+           
+           if (body.getAttribute('data-theme') === 'light') {
+               body.removeAttribute('data-theme');
+               themeIcon.className = 'fas fa-sun';
+           } else {
+               body.setAttribute('data-theme', 'light');
+               themeIcon.className = 'fas fa-moon';
+           }
+       });
 
-            <p><strong>Database Project</strong> - Backend system for "Lost and Found"<br>
-            May 2024 - June 2024 (SQL)</p>
+       // ==================== LANGUAGE SELECTOR ==================== 
+       const languageSelect = document.getElementById('language-select');
+       
+       languageSelect.addEventListener('change', function() {
+           changeLanguage(this.value);
+       });
 
-            <p><strong>Personal Portfolio</strong> - Developed a personal portfolio website<br>
-            October 2024 (HTML, CSS, JavaScript)</p>
+       // ==================== LANGUAGE TRANSLATIONS ==================== 
+       const translations = {
+           fr: {
+               'back-to-home': 'Retour à l\'accueil',
+               'download-cv': 'Télécharger CV',
+               'job-title': 'Étudiant Ingénieur en Informatique',
+               'contact': 'Contact',
+               'linkedin-profile': 'Profil LinkedIn',
+               'languages': 'Langues',
+               'french': 'Français',
+               'arabic': 'Arabe',
+               'english': 'Anglais',
+               'spanish': 'Espagnol',
+               'fluent': 'Courant',
+               'native': 'Langue maternelle',
+               'intermediate': 'Intermédiaire',
+               'beginner': 'Débutant',
+               'interests': 'Centres d\'intérêt',
+               'soccer': 'Football',
+               'tennis': 'Tennis',
+               'mathematics': 'Mathématiques',
+               'programming': 'Programmation',
+               'profile': 'Profil',
+               'profile-text': 'Actuellement en deuxième année de cycle préparatoire intégré à l\'École 3iL Ingénieurs à Limoges, j\'ai un fort intérêt pour les technologies numériques et le développement logiciel. Je recherche un stage de 36 mois en développement logiciel à partir de septembre 2025. Avec une formation rigoureuse et variée, j\'ai construit une base solide en programmation, algorithmes et conception logicielle. Je suis enthousiaste, persévérant et avide de nouveaux défis, prêt à m\'investir pleinement dans les ambitions de votre équipe.',
+               'education': 'Formation',
+               'date-present': 'Septembre 2023 - Présent',
+               'cs-engineering': 'Cycle Ingénieur Informatique',
+               'date-bac': 'Septembre 2022 - Juin 2023',
+               'bac-physics': 'Baccalauréat en Physique',
+               'projects': 'Projets',
+               'date-oct-2024': 'Octobre 2024',
+               'portfolio-title': 'Portfolio Personnel',
+               'portfolio-desc': 'Développement d\'un site web personnel présentant mes compétences et projets. Utilisation de technologies web modernes avec design responsive et animations CSS avancées.',
+               'date-nov-2024': 'Novembre 2024',
+               'game-title': 'Jeu en C',
+               'game-desc': 'Création d\'un jeu interactif en console utilisant les structures de données et algorithmes de base. Implémentation de la logique de jeu, gestion des scores et interface utilisateur.',
+               'date-dec-2024': 'Décembre 2024',
+               'database-title': 'Projet Base de Données',
+               'database-desc': 'Conception et implémentation d\'une base de données relationnelle pour un système de gestion. Modélisation des données, requêtes SQL complexes, et optimisation des performances.',
+               'technical-skills': 'Compétences Techniques',
+               'programming-languages': 'Langages de Programmation',
+               'systems-networking': 'Systèmes et Réseaux',
+               'databases': 'Bases de Données',
+                'hardware-embedded': 'Matériel et Embarqué',
+           },
+           en: {
+               'back-to-home': 'Back to Home',
+               'download-cv': 'Download CV',
+               'job-title': 'Computer Science Engineering Student',
+               'contact': 'Contact',
+               'linkedin-profile': 'LinkedIn Profile',
+               'languages': 'Languages',
+               'french': 'French',
+               'arabic': 'Arabic',
+               'english': 'English',
+               'spanish': 'Spanish',
+               'fluent': 'Fluent',
+               'native': 'Native',
+               'intermediate': 'Intermediate',
+               'beginner': 'Beginner',
+               'interests': 'Interests',
+               'soccer': 'Soccer',
+               'tennis': 'Tennis',
+               'mathematics': 'Mathematics',
+               'programming': 'Programming',
+               'profile': 'Profile',
+               'profile-text': 'Currently in my second year of integrated preparatory cycle at École 3iL Engineers in Limoges, I have a strong interest in digital technologies and software development. I am seeking a 36-month internship in software development starting September 2025. With rigorous and varied training, I have built a solid foundation in programming, algorithms, and software design. I am enthusiastic, perseverant, and eager for new challenges, ready to fully invest in your team\'s ambitions.',
+               'education': 'Education',
+               'date-present': 'September 2023 - Present',
+               'cs-engineering': 'Computer Science Engineering Cycle',
+               'date-bac': 'September 2022 - June 2023',
+               'bac-physics': 'Physics Baccalaureate',
+               'projects': 'Projects',
+               'date-oct-2024': 'October 2024',
+               'portfolio-title': 'Personal Portfolio',
+               'portfolio-desc': 'Development of a personal website showcasing my skills and projects. Using modern web technologies with responsive design and advanced CSS animations.',
+               'date-nov-2024': 'November 2024',
+               'game-title': 'C Game',
+               'game-desc': 'Creation of an interactive console game using basic data structures and algorithms. Implementation of game logic, score management, and user interface.',
+               'date-dec-2024': 'December 2024',
+               'database-title': 'Database Project',
+               'database-desc': 'Design and implementation of a relational database for a management system. Data modeling, complex SQL queries, and performance optimization.',
+               'technical-skills': 'Technical Skills',
+               'programming-languages': 'Programming Languages',
+               'systems-networking': 'Systems & Networking',
+               'databases': 'Databases',
+               'hardware-embedded': 'Hardware & Embedded',
+           },
+       };
 
-            <p><strong>Traffic Light Management System</strong> - Using Arduino Uno, LEDs, resistors, and wiring<br>
-            (System Design and Coding)</p>
-        </div>
+       // ==================== LANGUAGE CHANGE FUNCTION ==================== 
+       function changeLanguage(lang) {
+           const elements = document.querySelectorAll('[data-lang]');
+           elements.forEach(element => {
+               const key = element.getAttribute('data-lang');
+               if (translations[lang] && translations[lang][key]) {
+                   element.textContent = translations[lang][key];
+               }
+           });
+           
+           // Set RTL for Arabic
+           if (lang === 'ar') {
+               document.body.setAttribute('data-lang', 'ar');
+           } else {
+               document.body.removeAttribute('data-lang');
+           }
+       }
 
-        <!-- Technical Skills Section -->
-        <div class="cv-section">
-            <h2>Technical Skills</h2>
-            <ul>
-                <li>Programming Languages: Java, Processing, C/C++, CSS, HTML, JavaScript, Python</li>
-                <li>Networking and Systems: Linux Servers (Ubuntu, Debian, Kali)</li>
-                <li>Databases: SQL, MySQL</li>
-            </ul>
-        </div>
+       // ==================== SMOOTH SCROLLING ==================== 
+       document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+           anchor.addEventListener('click', function (e) {
+               e.preventDefault();
+               document.querySelector(this.getAttribute('href')).scrollIntoView({
+                   behavior: 'smooth'
+               });
+           });
+       });
 
-        <!-- Interests Section -->
-        <div class="cv-section">
-            <h2>Interests</h2>
-            <ul>
-                <li>Sports: Soccer and Tennis</li>
-                <li>Mathematics: Regular practice to enhance analytical skills</li>
-                <li>Computer Science: Developing skills and working on personal projects</li>
-            </ul>
-        </div>
-    </section>
+       // ==================== INTERSECTION OBSERVER FOR ANIMATIONS ==================== 
+       const observerOptions = {
+           threshold: 0.1,
+           rootMargin: '0px 0px -50px 0px'
+       };
+
+       const observer = new IntersectionObserver((entries) => {
+           entries.forEach(entry => {
+               if (entry.isIntersecting) {
+                   entry.target.style.opacity = '1';
+                   entry.target.style.transform = 'translateY(0)';
+               }
+           });
+       }, observerOptions);
+
+       document.querySelectorAll('.cv-section').forEach(section => {
+           section.style.opacity = '0';
+           section.style.transform = 'translateY(30px)';
+           section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+           observer.observe(section);
+       });
+   </script>
 </body>
 </html>
